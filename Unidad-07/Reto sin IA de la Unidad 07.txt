@@ -1,0 +1,88 @@
+src
+
+
+	domain/
+		entities/
+			Reserva.ts
+			+idReserva: int (get)
+			+idCliente: int (get, set)
+			+numeroNoches: int (get, set)
+			+idTipoHabitacion: int (get, set)
+			+estadoReserva: boolean (get, set)
+
+			TipoHabitacion.ts
+			+idTipoHabitacion: int (get)
+			+nombreTipoHabitacion: string (get)
+
+			Cliente.ts
+			+idCliente: int (get)
+			+nombreCliente: string (get, set)
+			+apellidosCliente: string (get, set)
+
+		interfaces/
+			repositories/
+				IRepositoryReserva.ts
+				+getListadoReservas(): Reserva[]
+				+getReservaPorId(idReserva: int): Reserva
+				+actualizarReserva(idReserva: int, Reserva reservaActualizada): boolean
+				
+				IRepositoryTipoHabitacion.ts
+				+getListadoTipoHabitacion(): TipoHabitacion[]
+				+getTipoHabitacionPorId(idTipoHabitacion: int): TipoHabitacion
+
+				IRepositoryCliente.ts
+				+getClientePorId(idCliente: int): Cliente
+
+
+	application/
+        dto/
+            ReservaConNombreClienteDTO.ts
+            +idReserva: int (get)
+            +nombreCliente: string (get)
+            +apellidosCliente: string (get)
+            +nombreTipoHabitacion: string (get)
+            +estadoReserva: string (get)
+            +numeroNoches: int (get)
+
+		interfaces/
+			reservas/
+				IGetListadoReservasCompleto.ts
+				+execute(): Reserva[]
+
+				IGetReservaPorId.ts
+				+execute(idReserva: int): Reserva
+
+				IActualizarReserva.ts
+				+execute(idReserva: int, Reserva reservaActualizada): boolean
+
+                IGetReservaConNombreClienteDTO.ts
+                +execute(): ReservaConNombreClienteDTO[]
+
+			tiposHabitacion/
+				IGetListadoTipoHabitacionCompleto.ts
+				+execute(): TipoHabitacion[]
+
+				IGetTipoHabitacionPorId.ts
+				+execute(idTipoHabitacion: int): TipoHabitacion
+
+			clientes/
+				IGetClientePorId.ts
+				+execute(idCliente: int): Cliente
+
+
+	data/
+		repositories/
+	
+
+	presentation/
+		viewModels/
+
+		views/
+
+		models/
+			mappers/
+	
+    
+	core/
+		container.ts
+		types.ts
